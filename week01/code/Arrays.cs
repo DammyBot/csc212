@@ -13,7 +13,19 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        // STEPS
+        // 1. Create an array of doubles with size length
+        // 2. Loop from 0 to length and for each index i, set the value of the array at index i to be number * (i + 1) so as to increase the multiple by 1 for each index
+        // 3. Return the array
+        var results = new double[length];
+        for(var i=0; i<length; i++)
+        {
+            results[i] = number * (i + 1);
+            Console.WriteLine(results[i]);
+        }
+
+
+        return results; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +41,18 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        // STEPS
+        // 1. Create a new list to hold the rotated values
+        // 2. Loop from 0 to data.Count and for each index i, calculate the new index as (i + amount) % data.Count and add the value at index i in data to the new list at the new index
+        // 3. Clear the original data list and add all the values from the new list back to the original data list
+        var rotated = new List<int>(new int[data.Count]);
+        for(var i=0; i<data.Count; i++)
+        {
+            var newIndex = (i + amount) % data.Count;
+            rotated[newIndex] = data[i];
+        }
+        data.Clear();
+        data.AddRange(rotated);
     }
 }
