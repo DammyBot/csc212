@@ -13,7 +13,8 @@ public class PersonQueue
     /// <param name="person">The person to add</param>
     public void Enqueue(Person person)
     {
-        _queue.Insert(0, person);
+        // This adds the person to the end of the queue, instead of inserting them at the beginning of the queue. So as to make the queue circular.
+        _queue.Add(person);
     }
 
     public Person Dequeue()

@@ -40,7 +40,13 @@ public class TakingTurnsQueue
         else
         {
             Person person = _people.Dequeue();
-            if (person.Turns > 1)
+            // Infinite turns means the person stays in the queue forever. This wasn't accounted for before
+            if (person.Turns <= 0)
+            {
+                _people.Enqueue(person);
+            }
+            // Finite turns greater than 1 means decrement and re-enqueue.
+            else if (person.Turns > 1)
             {
                 person.Turns -= 1;
                 _people.Enqueue(person);
