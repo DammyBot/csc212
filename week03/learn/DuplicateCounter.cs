@@ -25,6 +25,19 @@
     private static int CountDuplicates(int[] data)
     {
         // Add code here.
-        return 0;
+        int duplicateCount = 0;
+        for (int i = 0; i<data.Length; i++)
+        {
+                for (int j = i + 1; j < data.Length; j++)
+                {
+                    if (data[i] == data[j])
+                    {
+                        Console.WriteLine($"Duplicate found: {data[i]}");
+                        duplicateCount++;
+                        break; // Exit the inner loop so the function doesn't count the same duplicate more than once
+                    }
+                }
+        }
+        return duplicateCount;
     }
 }

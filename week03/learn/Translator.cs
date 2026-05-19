@@ -9,6 +9,7 @@ public class Translator
         Console.WriteLine(englishToGerman.Translate("Car")); // Auto
         Console.WriteLine(englishToGerman.Translate("Plane")); // Flugzeug
         Console.WriteLine(englishToGerman.Translate("Train")); // ???
+        Console.WriteLine(englishToGerman.Translate("Book")); 
     }
 
     private Dictionary<string, string> _words = new();
@@ -25,6 +26,7 @@ public class Translator
     public void AddWord(string fromWord, string toWord)
     {
         // ADD YOUR CODE HERE
+        _words.Add(fromWord, toWord);
     }
 
     /// <summary>
@@ -35,6 +37,11 @@ public class Translator
     public string Translate(string fromWord)
     {
         // ADD YOUR CODE HERE
-        return "";
+        if (_words.TryGetValue(fromWord, out string translatedWord))
+        {
+            return translatedWord;
+        }
+
+        return "???";
     }
 }
